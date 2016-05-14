@@ -16,6 +16,7 @@
 @synthesize urlString = ivar_urlString;
 
 - (void)dealloc {
+    self.delegate = nil;
     [super dealloc];
 }
 
@@ -34,9 +35,9 @@
 #pragma mark NSSession Delegates Implementation
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-    if ([self APIResponseSuccessCallback]) {
+    if ([self delegate]) {
         NSData *data = [NSData dataWithContentsOfURL:location];
-        self.APIResponseSuccessCallback(data);
+        [[self delegate] serverCommunicationControllerDidLoadData:data];
     }
 }
 

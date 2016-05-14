@@ -14,17 +14,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     NOHSRootViewController *rootViewController = [[NOHSRootViewController new] autorelease];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     UIWindow *mainWindow = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    [mainWindow setRootViewController:rootViewController];
+    [mainWindow setRootViewController:navigationController];
     [mainWindow makeKeyAndVisible];
     self.window = mainWindow;
     return YES;
 }
 
 - (void)dealloc {
-    if (self.window) {
-        [self.window release];
-    }
     [super dealloc];
 }
 

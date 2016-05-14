@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NOHSServerCommunicationControllerDelegate <NSObject>
+- (void)serverCommunicationControllerDidLoadData:(NSData*)data;
+@end
+
 @interface NOHSServerCommunicationController : NSObject
 
-@property(nonatomic,retain) NSString *urlString;
-@property (nonatomic, copy) void (^APIResponseSuccessCallback)(NSData *data);
-
+@property(nonatomic, retain) NSString *urlString;
+@property(nonatomic, assign) id <NOHSServerCommunicationControllerDelegate> delegate;
 - (void)sendRequestToServer;
 @end
