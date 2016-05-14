@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02899F501CE74EFF00C42BB9 /* NOHSLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02899F4F1CE74EFF00C42BB9 /* NOHSLaunchScreen.xib */; };
+		02899F531CE7508200C42BB9 /* NOHSServerCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */; };
 		BBD3AF871CE6353600A54215 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF7F1CE6353600A54215 /* AppDelegate.m */; };
 		BBD3AF8A1CE6353600A54215 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF851CE6353600A54215 /* main.m */; };
 		BBD3AF8E1CE6357000A54215 /* NOHSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF8C1CE6357000A54215 /* NOHSRootViewController.m */; };
@@ -16,6 +17,8 @@
 
 /* Begin PBXFileReference section */
 		02899F4F1CE74EFF00C42BB9 /* NOHSLaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOHSLaunchScreen.xib; sourceTree = "<group>"; };
+		02899F511CE7508200C42BB9 /* NOHSServerCommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSServerCommunicationController.h; sourceTree = "<group>"; };
+		02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSServerCommunicationController.m; sourceTree = "<group>"; };
 		BBD3AF631CE6341C00A54215 /* NOHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3AF7E1CE6353600A54215 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BBD3AF7F1CE6353600A54215 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -37,6 +40,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02899F541CE7604800C42BB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BBD3AF5A1CE6341B00A54215 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 				BBD3AF7D1CE6353600A54215 /* AppDelegate */,
 				BBD3AF801CE6353600A54215 /* Classes */,
 				BBD3AF811CE6353600A54215 /* Resources */,
+				02899F541CE7604800C42BB9 /* Models */,
 				BBD3AF861CE6353600A54215 /* ViewControllers */,
 			);
 			path = NOHS;
@@ -76,6 +87,8 @@
 		BBD3AF801CE6353600A54215 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				02899F511CE7508200C42BB9 /* NOHSServerCommunicationController.h */,
+				02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -172,6 +185,7 @@
 				BBD3AF8E1CE6357000A54215 /* NOHSRootViewController.m in Sources */,
 				BBD3AF8A1CE6353600A54215 /* main.m in Sources */,
 				BBD3AF871CE6353600A54215 /* AppDelegate.m in Sources */,
+				02899F531CE7508200C42BB9 /* NOHSServerCommunicationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

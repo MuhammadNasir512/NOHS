@@ -7,6 +7,9 @@
 //
 
 #import "NOHSRootViewController.h"
+#import "NOHSServerCommunicationController.h"
+
+typedef void (^APIResponseSuccessCallback)(NSData *responseData);
 
 @interface NOHSRootViewController ()
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
@@ -25,8 +28,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"View Did Load");
+    [self makeAPICallToLoadData];
 }
 
-// https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50
+- (void)makeAPICallToLoadData {
+    NOHSServerCommunicationController *apiController = [NOHSServerCommunicationController new];
+    [apiController setUrlString:@"https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50"];
+    [apiController setAPIResponseSuccessCallback:^(NSData *data) {
+        if (data != nil) {
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:kNilOptions
+                                                                   error:&error];
+            
+            NSArray* latestLoans = [json objectForKey:@"items"];
+            
+            NSLog(@"items: %@", latestLoans);
+        }
+        
+    }];
+    [apiController sendRequestToServer];
+}
+
 @end
