@@ -13,9 +13,37 @@
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (nil != self) {
-        
+        self.name = dictionary[@"name"];
+        self.detailsUrl = dictionary[@"href"];
+        self.thumbnailUrl = [self thumbnailUrlWithDictionary:dictionary];
+
     }
     return self;
+}
+
+- (NSString*)thumbnailUrlWithDictionary:(NSDictionary*)dictionary {
+    NSDictionary *imageItemSelected = nil;
+    NSInteger index = 0;
+    NSInteger maxHeight = 0;
+    
+    for (NSDictionary *imageItem in dictionary[@"images"]) {
+        if (index == 0) {
+            maxHeight = [imageItem[@"height"] integerValue];
+        }
+        else {
+            NSInteger imageHeight = [imageItem[@"height"] integerValue];
+            if (imageHeight < maxHeight) {
+                maxHeight = imageHeight;
+                imageItemSelected = imageItem;
+            }
+        }
+        index++;
+    }
+    
+    if (imageItemSelected) {
+        return imageItemSelected[@"url"];
+    }
+    return nil;
 }
 
 @end

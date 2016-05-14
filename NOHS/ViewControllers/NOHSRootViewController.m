@@ -7,47 +7,60 @@
 //
 
 #import "NOHSRootViewController.h"
-#import "NOHSServerCommunicationController.h"
+#import "NOHSDataController.h"
+#import "NOHSAlbumListViewController.h"
 
-typedef void (^APIResponseSuccessCallback)(NSData *responseData);
-
-@interface NOHSRootViewController ()
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@interface NOHSRootViewController () <NOHSDataControllerDelegate>
+@property (nonatomic, retain) NSArray *albums;
+@property (nonatomic, retain) NOHSAlbumListViewController *albumsViewController;
 @end
 
 @implementation NOHSRootViewController
 
-@synthesize tableView = ivar_tableView;
-
 - (void)dealloc {
-    if (nil != ivar_tableView) {
-        [ivar_tableView release];
+    if (nil != _albums) {
+        [_albums release];
+    }
+    if (nil != _albumsViewController) {
+        [_albumsViewController release];
     }
     [super dealloc];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self makeAPICallToLoadData];
+    [self setTitle:@"Albums"];
+    [self addAlbumListView];
+    [self prepareALbumList];
 }
 
-- (void)makeAPICallToLoadData {
-    NOHSServerCommunicationController *apiController = [NOHSServerCommunicationController new];
-    [apiController setUrlString:@"https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50"];
-    [apiController setAPIResponseSuccessCallback:^(NSData *data) {
-        if (data != nil) {
-            NSError* error;
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];
-            
-            NSArray* latestLoans = [json objectForKey:@"items"];
-            
-            NSLog(@"items: %@", latestLoans);
-        }
-        
-    }];
-    [apiController sendRequestToServer];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    CGRect frame = UIEdgeInsetsInsetRect([[self view] bounds], UIEdgeInsetsZero);
+    [[_albumsViewController view] setFrame:frame];
+}
+
+#pragma mark Creating List View
+
+- (void)addAlbumListView {
+    NOHSAlbumListViewController *albumListViewController = [NOHSAlbumListViewController new];
+    [self addChildViewController:albumListViewController];
+    [[self view] addSubview:[albumListViewController view]];
+    [albumListViewController didMoveToParentViewController:self];
+    _albumsViewController = albumListViewController;
+    [albumListViewController release];
+}
+
+#pragma mark Data Loading
+
+- (void)prepareALbumList {
+    NOHSDataController *dataController = [NOHSDataController new];
+    [dataController setDelegate:self];
+    [dataController createAlbumsArray];
+}
+
+- (void)dataControllerDidPrepareAlbums:(NSArray *)albums {
+    [_albumsViewController reloadWithAlbums:albums];
 }
 
 @end
