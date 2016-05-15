@@ -7,26 +7,73 @@
 //
 
 #import "NOHSRootViewController.h"
+#import "NOHSDataController.h"
+#import "NOHSAlbumListViewController.h"
 
-@interface NOHSRootViewController ()
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@interface NOHSRootViewController () <NOHSDataControllerDelegate, NOHSAlbumListViewControllerDelegate>
+@property (nonatomic, retain) NSArray *albums;
+@property (nonatomic, retain) NOHSAlbumListViewController *albumsListViewController;
+@property (nonatomic, retain) NOHSDataController *dataController;
 @end
 
 @implementation NOHSRootViewController
 
-@synthesize tableView = ivar_tableView;
-
 - (void)dealloc {
-    if (nil != ivar_tableView) {
-        [ivar_tableView release];
+    if (nil != _albums) {
+        [_albums release];
+    }
+    if (nil != _albumsListViewController) {
+        [_albumsListViewController release];
+    }
+    if (nil != _dataController) {
+        [_dataController release];
     }
     [super dealloc];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"View Did Load");
+    [self setTitle:@"Albums"];
+    [self addAlbumsListView];
+    [self initAPIDataController];
+    [self loadItemsInAlbumsList];
 }
 
-// https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    CGRect frame = UIEdgeInsetsInsetRect([[self view] bounds], UIEdgeInsetsZero);
+    [[_albumsListViewController view] setFrame:frame];
+}
+
+#pragma mark Creating List View
+
+- (void)addAlbumsListView {
+    NOHSAlbumListViewController *albumListViewController = [NOHSAlbumListViewController new];
+    [albumListViewController setDelegate:self];
+    [self addChildViewController:albumListViewController];
+    [[self view] addSubview:[albumListViewController view]];
+    [albumListViewController didMoveToParentViewController:self];
+    _albumsListViewController = albumListViewController;
+    [albumListViewController release];
+}
+
+- (void)didScrollToEndOfTheList {
+    [self loadItemsInAlbumsList];
+}
+
+#pragma mark Data Loading
+
+- (void)initAPIDataController {
+    NOHSDataController *dataController = [NOHSDataController new];
+    [dataController setDelegate:self];
+    _dataController = dataController;
+}
+- (void)loadItemsInAlbumsList {
+    [_dataController populateAlbumsArray];
+}
+
+- (void)dataControllerDidPrepareAlbums:(NSArray *)albums {
+    [_albumsListViewController reloadWithAlbums:albums];
+}
+
 @end
