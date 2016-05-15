@@ -81,4 +81,12 @@ static NSString *const NOHSTableViewCellIdentifier = @"NOHSCellID";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath row] == [_albums count]-1) {
+        if ([self.delegate respondsToSelector:@selector(didScrollToEndOfTheList)]) {
+            [self.delegate didScrollToEndOfTheList];
+        }
+    }
+}
+
 @end
