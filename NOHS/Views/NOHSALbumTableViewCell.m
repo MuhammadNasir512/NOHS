@@ -170,8 +170,8 @@ static const CGFloat NOHSThumbnailHeight = 60.0f;
     if (nil == [album thumbnailImage]) {
         [NOHSUtilities loadDataFromURL:[NSURL URLWithString:[blockAlbum thumbnailUrl]] callback:^(NSData *data) {
             UIImage *image = [UIImage imageWithData:data];
-            [_imageViewThumbnail setImage:image];
-            [_album setThumbnailImage:image];
+            [[blockSelf imageViewThumbnail] setImage:image];
+            [blockAlbum setThumbnailImage:image];
             [blockSelf removeThumbnailActivityIndicator];
         }];
     }
