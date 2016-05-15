@@ -15,7 +15,7 @@
 static const CGFloat NOHSCellContentsPadding = 10.0f;
 static const CGFloat NOHSCellContentsItmesHPadding = 15.0f;
 static const CGFloat NOHSCellContentsItmesVPadding = 5.0f;
-static const CGFloat NOHSThumbnailHeight = 50.0f;
+static const CGFloat NOHSThumbnailHeight = 60.0f;
 
 @interface NOHSALbumTableViewCell ()
 @property (nonatomic, retain) UILabel *labelForName;
@@ -45,7 +45,9 @@ static const CGFloat NOHSThumbnailHeight = 50.0f;
     
     CGSize sizeMax = CGSizeMake(maxNameLabelWidth, INFINITY);
     CGFloat nameHeight = [album.name textSizeWithMaximumSize:sizeMax withFont:[cellMetaData fontForNameLabel]].height;
-    CGFloat height = nameHeight + [[cellMetaData fontForYearLabel] lineHeight] + NOHSCellContentsItmesVPadding + 2.0f*NOHSCellContentsPadding;
+    CGFloat height = nameHeight + [[cellMetaData fontForYearLabel] lineHeight] + NOHSCellContentsItmesVPadding;
+    height = (height >= NOHSThumbnailHeight)?height:NOHSThumbnailHeight;
+    height += 2.0f*NOHSCellContentsPadding;
     return height;
 }
 
@@ -102,6 +104,8 @@ static const CGFloat NOHSThumbnailHeight = 50.0f;
     yy =  NOHSCellContentsPadding;
     ww = CGRectGetWidth([self bounds]) - xx - NOHSCellContentsPadding;
     hh = CGRectGetHeight([self bounds]) - 2.0f*NOHSCellContentsPadding - NOHSCellContentsItmesVPadding - [[_cellMetaData fontForYearLabel] lineHeight];
+    CGSize sizeMax = CGSizeMake(ww, INFINITY);
+    hh = [[_labelForName text] textSizeWithMaximumSize:sizeMax withFont:[_cellMetaData fontForNameLabel]].height;
     [_labelForName setFrame:CGRectMake(xx, yy, ww, hh)];
     
     yy += hh + NOHSCellContentsItmesVPadding;
