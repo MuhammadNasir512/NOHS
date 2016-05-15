@@ -137,15 +137,21 @@ static const CGFloat NOHSThumbnailHeight = 50.0f;
 - (void)setupAlbumReleaseYearWithAlbum:(NOHSAlbum*)album {
     __block typeof(self) blockSelf = self;
     __block typeof(album) blockAlbum = album;
-    [NOHSUtilities loadDataFromURL:[NSURL URLWithString:[blockAlbum detailsUrl]] callback:^(NSData *data) {
-        NSDictionary *dataDictionary = [NOHSUtilities dictionaryRepresentationOfData:data];
-        if (nil != dataDictionary) {
-            NSString *releaseYear = [NOHSUtilities yearFromDateString:dataDictionary[@"release_date"]];
-            [[blockSelf labelForYear] setText:releaseYear];
-            [blockAlbum setReleaseYear:releaseYear];
-        }
-        [blockSelf removeReleaseYearActivityIndicator];
-    }];
+    if (nil == [album releaseYear]) {
+        [NOHSUtilities loadDataFromURL:[NSURL URLWithString:[blockAlbum detailsUrl]] callback:^(NSData *data) {
+            NSDictionary *dataDictionary = [NOHSUtilities dictionaryRepresentationOfData:data];
+            if (nil != dataDictionary) {
+                NSString *releaseYear = [NOHSUtilities yearFromDateString:dataDictionary[@"release_date"]];
+                [[blockSelf labelForYear] setText:releaseYear];
+                [blockAlbum setReleaseYear:releaseYear];
+            }
+            [blockSelf removeReleaseYearActivityIndicator];
+        }];
+    }
+    else {
+        [[self labelForYear] setText:[album releaseYear]];
+        [self removeReleaseYearActivityIndicator];
+    }
 }
 
 - (void)removeReleaseYearActivityIndicator {
@@ -158,12 +164,18 @@ static const CGFloat NOHSThumbnailHeight = 50.0f;
 - (void)setupThumbnailImageWithAlbum:(NOHSAlbum*)album {
     __block typeof(self) blockSelf = self;
     __block typeof(album) blockAlbum = album;
-    [NOHSUtilities loadDataFromURL:[NSURL URLWithString:[blockAlbum thumbnailUrl]] callback:^(NSData *data) {
-        UIImage *image = [UIImage imageWithData:data];
-        [_imageViewThumbnail setImage:image];
-        [_album setThumbnailImage:image];
-        [blockSelf removeThumbnailActivityIndicator];
-    }];
+    if (nil == [album thumbnailImage]) {
+        [NOHSUtilities loadDataFromURL:[NSURL URLWithString:[blockAlbum thumbnailUrl]] callback:^(NSData *data) {
+            UIImage *image = [UIImage imageWithData:data];
+            [_imageViewThumbnail setImage:image];
+            [_album setThumbnailImage:image];
+            [blockSelf removeThumbnailActivityIndicator];
+        }];
+    }
+    else {
+        [[self imageViewThumbnail] setImage:[album thumbnailImage]];
+        [self removeThumbnailActivityIndicator];
+    }
 }
 
 - (void)removeThumbnailActivityIndicator {
