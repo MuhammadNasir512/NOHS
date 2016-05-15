@@ -103,7 +103,6 @@ static const CGFloat NOHSThumbnailHeight = 60.0f;
     xx += ww + NOHSCellContentsItmesHPadding;
     yy =  NOHSCellContentsPadding;
     ww = CGRectGetWidth([self bounds]) - xx - NOHSCellContentsPadding;
-    hh = CGRectGetHeight([self bounds]) - 2.0f*NOHSCellContentsPadding - NOHSCellContentsItmesVPadding - [[_cellMetaData fontForYearLabel] lineHeight];
     CGSize sizeMax = CGSizeMake(ww, INFINITY);
     hh = [[_labelForName text] textSizeWithMaximumSize:sizeMax withFont:[_cellMetaData fontForNameLabel]].height;
     [_labelForName setFrame:CGRectMake(xx, yy, ww, hh)];
