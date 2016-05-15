@@ -10,12 +10,19 @@
 
 @implementation NOHSAlbum
 
+- (void)dealloc {
+    [_name release];
+    [_detailsUrl release];
+    [_thumbnailUrl release];
+    [super dealloc];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (nil != self) {
-        self.name = [self nameStringWithDictionary:dictionary];
-        self.detailsUrl = dictionary[@"href"];
-        self.thumbnailUrl = [self thumbnailUrlWithDictionary:dictionary];
+        _name = [[self nameStringWithDictionary:dictionary] retain];
+        _detailsUrl = [dictionary[@"href"] retain];
+        _thumbnailUrl = [[self thumbnailUrlWithDictionary:dictionary] retain];
     }
     return self;
 }
