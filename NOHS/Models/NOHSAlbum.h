@@ -6,12 +6,13 @@
 //  Copyright © 2016 Ali, Muhammad. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NOHSAlbum : NSObject
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *releaseDate;
+@property (nonatomic, retain) NSString *releaseYear;
 @property (nonatomic, retain) NSString *thumbnailUrl;
 @property (nonatomic, retain) NSString *detailsUrl;
+@property (nonatomic, retain) UIImage *thumbnailImage;
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end

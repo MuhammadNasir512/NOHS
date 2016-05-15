@@ -17,6 +17,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     UIWindow *mainWindow = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     [mainWindow setRootViewController:navigationController];
+    [navigationController release];
     [mainWindow makeKeyAndVisible];
     self.window = mainWindow;
     return YES;

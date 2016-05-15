@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		02899F501CE74EFF00C42BB9 /* NOHSLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02899F4F1CE74EFF00C42BB9 /* NOHSLaunchScreen.xib */; };
-		02899F531CE7508200C42BB9 /* NOHSServerCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */; };
 		02B886FA1CE7645A0051502E /* NOHSAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B886F91CE7645A0051502E /* NOHSAlbum.m */; };
 		02B886FE1CE7721B0051502E /* NOHSAlbumListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B886FC1CE7721B0051502E /* NOHSAlbumListViewController.m */; };
 		02B886FF1CE7721B0051502E /* NOHSAlbumListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B886FD1CE7721B0051502E /* NOHSAlbumListViewController.xib */; };
 		02B887021CE773670051502E /* NOHSDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B887011CE773670051502E /* NOHSDataController.m */; };
 		02B887061CE77EEA0051502E /* NOHSALbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B887051CE77EEA0051502E /* NOHSALbumTableViewCell.m */; };
+		02B887101CE7D4540051502E /* NOHSTableCellMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B8870F1CE7D4540051502E /* NOHSTableCellMetaData.m */; };
+		02B887131CE7F2D00051502E /* NOHSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B887121CE7F2D00051502E /* NOHSUtilities.m */; };
+		02B887171CE7F40F0051502E /* NSString+NOHSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B887161CE7F40F0051502E /* NSString+NOHSUtils.m */; };
+		02B887191CE822A30051502E /* NOHS.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02B887181CE822A30051502E /* NOHS.jpg */; };
+		02B8871B1CE823F10051502E /* NOHS2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02B8871A1CE823F10051502E /* NOHS2.jpg */; };
+		02B8871D1CE825A30051502E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8871C1CE825A30051502E /* Images.xcassets */; };
 		BBD3AF871CE6353600A54215 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF7F1CE6353600A54215 /* AppDelegate.m */; };
 		BBD3AF8A1CE6353600A54215 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF851CE6353600A54215 /* main.m */; };
 		BBD3AF8E1CE6357000A54215 /* NOHSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD3AF8C1CE6357000A54215 /* NOHSRootViewController.m */; };
@@ -22,8 +27,6 @@
 
 /* Begin PBXFileReference section */
 		02899F4F1CE74EFF00C42BB9 /* NOHSLaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOHSLaunchScreen.xib; sourceTree = "<group>"; };
-		02899F511CE7508200C42BB9 /* NOHSServerCommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSServerCommunicationController.h; sourceTree = "<group>"; };
-		02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSServerCommunicationController.m; sourceTree = "<group>"; };
 		02B886F81CE7645A0051502E /* NOHSAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSAlbum.h; sourceTree = "<group>"; };
 		02B886F91CE7645A0051502E /* NOHSAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSAlbum.m; sourceTree = "<group>"; };
 		02B886FB1CE7721B0051502E /* NOHSAlbumListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSAlbumListViewController.h; sourceTree = "<group>"; };
@@ -33,6 +36,15 @@
 		02B887011CE773670051502E /* NOHSDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSDataController.m; sourceTree = "<group>"; };
 		02B887041CE77EEA0051502E /* NOHSALbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSALbumTableViewCell.h; sourceTree = "<group>"; };
 		02B887051CE77EEA0051502E /* NOHSALbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSALbumTableViewCell.m; sourceTree = "<group>"; };
+		02B8870E1CE7D4540051502E /* NOHSTableCellMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSTableCellMetaData.h; sourceTree = "<group>"; };
+		02B8870F1CE7D4540051502E /* NOHSTableCellMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSTableCellMetaData.m; sourceTree = "<group>"; };
+		02B887111CE7F2D00051502E /* NOHSUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOHSUtilities.h; sourceTree = "<group>"; };
+		02B887121CE7F2D00051502E /* NOHSUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOHSUtilities.m; sourceTree = "<group>"; };
+		02B887151CE7F40F0051502E /* NSString+NOHSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NOHSUtils.h"; sourceTree = "<group>"; };
+		02B887161CE7F40F0051502E /* NSString+NOHSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NOHSUtils.m"; sourceTree = "<group>"; };
+		02B887181CE822A30051502E /* NOHS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NOHS.jpg; sourceTree = "<group>"; };
+		02B8871A1CE823F10051502E /* NOHS2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NOHS2.jpg; sourceTree = "<group>"; };
+		02B8871C1CE825A30051502E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BBD3AF631CE6341C00A54215 /* NOHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3AF7E1CE6353600A54215 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BBD3AF7F1CE6353600A54215 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +84,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		02B887141CE7F40F0051502E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				02B887151CE7F40F0051502E /* NSString+NOHSUtils.h */,
+				02B887161CE7F40F0051502E /* NSString+NOHSUtils.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		BBD3AF5A1CE6341B00A54215 = {
 			isa = PBXGroup;
 			children = (
@@ -91,12 +112,14 @@
 		BBD3AF651CE6341C00A54215 /* NOHS */ = {
 			isa = PBXGroup;
 			children = (
-				BBD3AF7D1CE6353600A54215 /* AppDelegate */,
-				BBD3AF801CE6353600A54215 /* Classes */,
 				BBD3AF811CE6353600A54215 /* Resources */,
+				BBD3AF7D1CE6353600A54215 /* AppDelegate */,
+				02B887141CE7F40F0051502E /* Categories */,
+				BBD3AF801CE6353600A54215 /* Classes */,
 				02899F541CE7604800C42BB9 /* Models */,
 				BBD3AF861CE6353600A54215 /* ViewControllers */,
 				02B887031CE77DCA0051502E /* Views */,
+				02B8871C1CE825A30051502E /* Images.xcassets */,
 			);
 			path = NOHS;
 			sourceTree = "<group>";
@@ -113,10 +136,12 @@
 		BBD3AF801CE6353600A54215 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				02899F511CE7508200C42BB9 /* NOHSServerCommunicationController.h */,
-				02899F521CE7508200C42BB9 /* NOHSServerCommunicationController.m */,
 				02B887001CE773670051502E /* NOHSDataController.h */,
 				02B887011CE773670051502E /* NOHSDataController.m */,
+				02B8870E1CE7D4540051502E /* NOHSTableCellMetaData.h */,
+				02B8870F1CE7D4540051502E /* NOHSTableCellMetaData.m */,
+				02B887111CE7F2D00051502E /* NOHSUtilities.h */,
+				02B887121CE7F2D00051502E /* NOHSUtilities.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -127,6 +152,8 @@
 				BBD3AF841CE6353600A54215 /* Info.plist */,
 				BBD3AF851CE6353600A54215 /* main.m */,
 				02899F4F1CE74EFF00C42BB9 /* NOHSLaunchScreen.xib */,
+				02B887181CE822A30051502E /* NOHS.jpg */,
+				02B8871A1CE823F10051502E /* NOHS2.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -204,6 +231,9 @@
 				02899F501CE74EFF00C42BB9 /* NOHSLaunchScreen.xib in Resources */,
 				02B886FF1CE7721B0051502E /* NOHSAlbumListViewController.xib in Resources */,
 				BBD3AF8F1CE6357000A54215 /* NOHSRootViewController.xib in Resources */,
+				02B8871D1CE825A30051502E /* Images.xcassets in Resources */,
+				02B8871B1CE823F10051502E /* NOHS2.jpg in Resources */,
+				02B887191CE822A30051502E /* NOHS.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +249,11 @@
 				BBD3AF8A1CE6353600A54215 /* main.m in Sources */,
 				02B887021CE773670051502E /* NOHSDataController.m in Sources */,
 				02B886FA1CE7645A0051502E /* NOHSAlbum.m in Sources */,
+				02B887101CE7D4540051502E /* NOHSTableCellMetaData.m in Sources */,
 				BBD3AF871CE6353600A54215 /* AppDelegate.m in Sources */,
-				02899F531CE7508200C42BB9 /* NOHSServerCommunicationController.m in Sources */,
 				02B887061CE77EEA0051502E /* NOHSALbumTableViewCell.m in Sources */,
+				02B887131CE7F2D00051502E /* NOHSUtilities.m in Sources */,
+				02B887171CE7F40F0051502E /* NSString+NOHSUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,11 +344,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = NOHS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tuitravel.NOHS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mnapps.mntap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -324,11 +358,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = NOHS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tuitravel.NOHS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mnapps.mntap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -7,10 +7,10 @@
 //
 
 #import "NOHSDataController.h"
-#import "NOHSServerCommunicationController.h"
 #import "NOHSAlbum.h"
+#import "NOHSUtilities.h"
 
-@interface NOHSDataController () <NOHSServerCommunicationControllerDelegate>
+@interface NOHSDataController ()
 @property (nonatomic, retain) NSArray *albums;
 @end
 
@@ -18,27 +18,24 @@
 
 - (void)dealloc {
     self.delegate = nil;
+    if (nil != _albums) {
+        [_albums release];
+    }
     [super dealloc];
 }
 
 - (void)createAlbumsArray {
-    NOHSServerCommunicationController *apiController = [NOHSServerCommunicationController new];
-    [apiController setDelegate:self];
-    [apiController setUrlString:@"https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50"];
-    [apiController sendRequestToServer];
-}
-
-- (void)serverCommunicationControllerDidLoadData:(NSData *)data {
+    NSURL *url = [NSURL URLWithString:@"https://api.spotify.com/v1/artists/36QJpDe2go2KgaRleHCDTp/albums?limit=50"];
     
-    if (data != nil) {
-        NSError *error;
-        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    __block typeof(self) blockSelf = self;
+    [NOHSUtilities loadDataFromURL:url callback:^(NSData *data) {
+        NSDictionary *dataDictionary = [NOHSUtilities dictionaryRepresentationOfData:data];
         if (dataDictionary != nil) {
             NSArray* dataArray = [dataDictionary objectForKey:@"items"];
-            [self prepareAlbumArrayWithArray:dataArray];
+            [blockSelf prepareAlbumArrayWithArray:dataArray];
         }
         dataDictionary = nil;
-    }
+    }];
 }
 
 - (void)prepareAlbumArrayWithArray:(NSArray*)dataArray {
@@ -48,7 +45,7 @@
         [albumsArray addObject:album];
         [album release];
     }
-    if (_albums) {
+    if (nil != _albums) {
         [_albums release];
     }
     _albums = [[NSArray alloc] initWithArray:albumsArray];

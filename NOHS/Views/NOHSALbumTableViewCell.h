@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class NOHSAlbum;
+@class NOHSTableCellMetaData;
+
 @interface NOHSALbumTableViewCell : UITableViewCell
 - (void)reloadCellWithAlbum:(NOHSAlbum*)album;
-+ (CGFloat)heightWithAlbum:(NOHSAlbum*)album;
+- (void)setupCellWithMetaData:(NOHSTableCellMetaData*)cellMetaData;
++ (CGFloat)heightWithAlbum:(NOHSAlbum*)album cellMetaData:(NOHSTableCellMetaData*)cellMetaData;
 @end
