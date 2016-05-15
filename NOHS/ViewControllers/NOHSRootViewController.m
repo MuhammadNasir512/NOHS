@@ -10,7 +10,7 @@
 #import "NOHSDataController.h"
 #import "NOHSAlbumListViewController.h"
 
-@interface NOHSRootViewController () <NOHSDataControllerDelegate>
+@interface NOHSRootViewController () <NOHSDataControllerDelegate, NOHSAlbumListViewControllerDelegate>
 @property (nonatomic, retain) NSArray *albums;
 @property (nonatomic, retain) NOHSAlbumListViewController *albumsListViewController;
 @property (nonatomic, retain) NOHSDataController *dataController;
@@ -35,7 +35,8 @@
     [super viewDidLoad];
     [self setTitle:@"Albums"];
     [self addAlbumsListView];
-    [self prepareALbumsList];
+    [self initAPIDataController];
+    [self loadItemsInAlbumsList];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -48,6 +49,7 @@
 
 - (void)addAlbumsListView {
     NOHSAlbumListViewController *albumListViewController = [NOHSAlbumListViewController new];
+    [albumListViewController setDelegate:self];
     [self addChildViewController:albumListViewController];
     [[self view] addSubview:[albumListViewController view]];
     [albumListViewController didMoveToParentViewController:self];
@@ -55,13 +57,19 @@
     [albumListViewController release];
 }
 
+- (void)didScrollToEndOfTheList {
+    [self loadItemsInAlbumsList];
+}
+
 #pragma mark Data Loading
 
-- (void)prepareALbumsList {
+- (void)initAPIDataController {
     NOHSDataController *dataController = [NOHSDataController new];
     [dataController setDelegate:self];
-    [dataController createAlbumsArray];
     _dataController = dataController;
+}
+- (void)loadItemsInAlbumsList {
+    [_dataController populateAlbumsArray];
 }
 
 - (void)dataControllerDidPrepareAlbums:(NSArray *)albums {

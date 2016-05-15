@@ -14,5 +14,5 @@
 
 @interface NOHSDataController : NSObject
 @property(nonatomic, assign) id <NOHSDataControllerDelegate> delegate;
-- (void)createAlbumsArray;
+- (void)populateAlbumsArray;
 @end

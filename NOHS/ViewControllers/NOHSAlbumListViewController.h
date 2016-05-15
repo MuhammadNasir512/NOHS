@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NOHSAlbumListViewControllerDelegate <NSObject>
+- (void)didScrollToEndOfTheList;
+@end
+
 @interface NOHSAlbumListViewController : UIViewController
+@property (nonatomic, retain) id <NOHSAlbumListViewControllerDelegate> delegate;
 - (void)reloadWithAlbums:(NSArray*)albums;
 @end
