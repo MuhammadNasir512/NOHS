@@ -13,12 +13,16 @@
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (nil != self) {
-        self.name = dictionary[@"name"];
+        self.name = [self nameStringWithDictionary:dictionary];
         self.detailsUrl = dictionary[@"href"];
         self.thumbnailUrl = [self thumbnailUrlWithDictionary:dictionary];
-
     }
     return self;
+}
+
+- (NSString*)nameStringWithDictionary:(NSDictionary*)dictionary {
+    NSString *name = [dictionary[@"name"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return name;
 }
 
 - (NSString*)thumbnailUrlWithDictionary:(NSDictionary*)dictionary {
